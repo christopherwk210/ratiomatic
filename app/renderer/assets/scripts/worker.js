@@ -4,8 +4,15 @@ onmessage = e => {
   postMessage(subRatios);
 }
 
+/**
+ * Determines all evenly proportional ratios below the provided ratio
+ * @param {number} originalNum 
+ * @param {number} originalDenom 
+ */
 function determineSubRatios(originalNum, originalDenom) {
-  const GD = reduce(originalNum, originalDenom);
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const thisGCD = gcd(originalNum, originalDenom);
+  const GD = [originalNum / thisGCD, originalDenom / thisGCD];
 
   let thisNum = originalNum;
   let thisDenom = originalDenom;
@@ -42,17 +49,17 @@ function determineSubRatios(originalNum, originalDenom) {
   return ret;
 }
 
+/**
+ * Determines all evenly proportional ratios above the provided ratio up to a given numerator
+ * @param {number} targetNumerator 
+ * @param {number} targetDenomenator 
+ * @param {number} maxNumerator 
+ */
 function determineSuperRatios(targetNumerator, targetDenomenator, maxNumerator) {
   const originalNum = maxNumerator;
   const originalDenom = (maxNumerator / targetNumerator) * targetDenomenator;
 
   return determineSubRatios(originalNum, originalDenom);
-}
-
-function reduce(numerator, denominator) {
-  const gcd = (a, b) => b ? gcd(b, a % b) : a;
-  const thisGCD = gcd(numerator, denominator);
-  return [numerator / thisGCD, denominator / thisGCD];
 }
 
 function sortTuples(a, b) {
