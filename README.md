@@ -8,6 +8,8 @@ When designing UI for various applications, I often found myself needing to figu
 
 Also it works with MacOS dark theme ¯\\\_(ツ)\_/¯
 
+Thanks to [sanboxrunner](https://github.com/sanboxrunner) for writing the proportion simplification logic.
+
 ## Download
 Download the latest release [here](https://github.com/christopherwk210/ratiomatic/releases).
 
