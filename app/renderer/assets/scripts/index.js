@@ -32,6 +32,10 @@ const app = new Vue({
       this.denominator = this.denominator.replace(/-/g, '').split('.')[0]
     },
 
+    catchEnterKey(event) {
+      if (event.catchEnterKey === 13) this.submitRatio();
+    },
+
     // Submit the current ratio data to the web worker and save the results
     submitRatio: async function() {
       if (!this.readyToSubmit || this.loading) return;

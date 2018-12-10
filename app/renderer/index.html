@@ -11,9 +11,9 @@
     <div id="app">
       <div v-bind:class="{ loading: loading }" class="top-content">
         <div class="top">
-          <input @click="handleInputClick" @change="handleChangeNum" v-model="numerator" type="number">
+          <input @click="handleInputClick" @change="handleChangeNum" @keypress="catchEnterKey" v-model="numerator" type="number">
           <img src="../shared/images/ratiomatic-Template@2x.png">
-          <input @click="handleInputClick" @change="handleChangeDen" v-model="denominator" type="number">
+          <input @click="handleInputClick" @change="handleChangeDen" @keypress="catchEnterKey" v-model="denominator" type="number">
         </div>
         
         <button v-bind:class="{ active: readyToSubmit }" v-on:click="submitRatio()" class="submit">submit</button>
