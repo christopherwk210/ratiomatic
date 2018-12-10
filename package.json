@@ -4,15 +4,18 @@
   "description": "",
   "scripts": {
     "start": "NODE_ENV=development electron .",
-    "prod": "NODE_ENV=production electron ."
+    "prod": "NODE_ENV=production electron .",
+    "build": "electron-packager . --platform='darwin' --out='./dist' --asar --icon='./app/shared/images/icon.icns' --darwinDarkModeSupport=false --overwrite"
   },
   "main": "app/main/electron.js",
   "keywords": [],
   "author": "Chris Anselmo <christopherwk210@gmail.com>",
   "dependencies": {
-    "electron": "^3.0.10",
     "electron-positioner": "^4.1.0",
     "vue": "^2.5.18"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "electron": "^3.0.10",
+    "electron-packager": "^13.0.0"
+  }
 }
