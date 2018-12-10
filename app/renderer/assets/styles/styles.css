@@ -19,6 +19,12 @@ html, body {
   font-size: 12px;
 }
 
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .loading {
   opacity: 0.5;
   cursor: progress;
@@ -83,4 +89,39 @@ html, body {
 
 .submit.active:hover {
   border: 2px solid rgba(0,0,0,0.6);
+}
+
+.results {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1;
+  padding: 1em;
+}
+
+.results select {
+  border: 2px solid rgba(0,0,0,0.2);
+  font-size: 1.25em;
+  font-family: inherit;
+  border-radius: 4px;
+  padding: 0.5em;
+  height: 100%;
+  outline: none;
+  flex: 1;
+}
+
+.results select:focus {
+  border: 2px solid rgba(0,0,0,0.4);
+}
+
+.results select option {
+  padding: 0.5em;
+  outline: none;
+  border-radius: 4px;
+  color: rgba(0,0,0,0.8);
+}
+
+.results select option:checked {
+  background: linear-gradient(#999999, #999999);
+  color: white;
 }

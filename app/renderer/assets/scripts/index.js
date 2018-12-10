@@ -33,7 +33,7 @@ const app = new Vue({
     },
 
     catchEnterKey(event) {
-      if (event.catchEnterKey === 13) this.submitRatio();
+      if (event.keyCode === 13) this.submitRatio();
     },
 
     // Submit the current ratio data to the web worker and save the results
