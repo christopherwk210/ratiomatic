@@ -9,6 +9,8 @@
   </head>
   <body>
     <div id="app">
+      <div @click="showOptionsMenu" class="options"></div>
+
       <div v-bind:class="{ loading: loading }" class="top-content">
         <div class="top">
           <input v-bind:readonly="expanded" v-bind:class="{ readonly: expanded }" @click="handleInputClick" @change="handleChangeNum" @keypress="catchEnterKey" v-model="numerator" type="number">
@@ -22,6 +24,7 @@
           <button v-else v-on:click="reset()" class="submit active">reset</button>
         </div>
       </div>
+
       <div v-if="expanded" class="proportion">
         <div class="top">
           <input @click="handleInputClick" v-model="propNum" @input="handlePropNumInput" type="number">
@@ -29,6 +32,7 @@
           <input @click="handleInputClick" v-model="propDen" @input="handlePropDenInput" type="number">
         </div>
       </div>
+
       <div v-if="expanded" class="results">
         <select @input="handleRatioSelect" multiple size="2">
           <option v-for="sub of subRatios" v-bind:value="sub.join(':')">{{sub[0]}} <img src="../shared/images/ratiomatic-Template@2x.png"> {{sub[1]}}</option>

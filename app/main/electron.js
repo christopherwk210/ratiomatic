@@ -1,5 +1,5 @@
 // Imports
-const { app, BrowserWindow, Tray } = require('electron');
+const { app, BrowserWindow, Tray, Menu } = require('electron');
 const Positioner = require('electron-positioner');
 const path = require('path');
 
@@ -12,7 +12,9 @@ process.env.NODE_ENV = process.env.NODE_ENV === 'development' ? process.env.NODE
 const development = process.env.NODE_ENV !== 'production';
 
 app.on('ready', () => {
+  // Prevent default Mac application behaviors and keyboard shortcuts
   app.dock.hide();
+  Menu.setApplicationMenu(Menu.buildFromTemplate([]));
 
   const browserWindow = createBrowserWindow();
 
@@ -51,11 +53,6 @@ function createBrowserWindow() {
 
   browserWindow.setMenu(null);
   browserWindow.setVisibleOnAllWorkspaces(true);
-
-  browserWindow.on('close', e => {
-    e.preventDefault();
-    browserWindow.hide();
-  });
 
   return browserWindow;
 }

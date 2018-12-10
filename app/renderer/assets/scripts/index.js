@@ -18,7 +18,15 @@ const app = new Vue({
 
     // Proportional values
     propNum: null,
-    propDen: null
+    propDen: null,
+
+    // Options context menu
+    menu: electron.remote.Menu.buildFromTemplate([
+      {
+        label: 'Quit',
+        role: 'quit'
+      }
+    ])
   },
   computed: {
     readyToSubmit() {
@@ -125,6 +133,10 @@ const app = new Vue({
     handlePropDenInput() {
       const crossDivide = this.propDen * this.numerator;
       this.propNum = crossDivide / this.denominator;
+    },
+
+    showOptionsMenu() {
+      this.menu.popup({});
     }
   }
 });
