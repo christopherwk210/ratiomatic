@@ -70,8 +70,15 @@ html, body {
 
 .x {
   opacity: 0.3;
-  margin: 0 1em;
-  font-size: 1.25em;
+  font-size: 1.3em;
+  width: 32px;
+  display: inline-block;
+  text-align: center;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: center;
 }
 
 .submit {
@@ -86,6 +93,7 @@ html, body {
   cursor: not-allowed;
   opacity: 0.2;
   outline: none;
+  margin: 0 0.25em;
 }
 
 .submit.active {
@@ -133,7 +141,7 @@ html, body {
 }
 
 .readonly {
-  border: none !important;
+  border: 2px solid transparent !important;
   user-select: none;
   cursor: default;
 }

@@ -26,6 +26,22 @@ const app = new Vue({
     }
   },
   methods: {
+    reset() {
+      this.contractWindow();
+
+      this.numerator = null;
+      this.denominator = null;
+
+      this.expanded = false;
+      this.loading = false;
+
+      this.subRatios = [];
+      this.superRatios = [];
+
+      this.propNum = null;
+      this.propDen = null;
+    },
+
     handleInputClick: event => event.target.select(),
 
     // Ensure that only positive whole numbers can be used
@@ -48,7 +64,7 @@ const app = new Vue({
       this.loading = false;
 
       if (result !== 'timeout') {
-        this.subRatios = result;
+        this.subRatios = result.reverse();
       } else {
         // show timeout message
         return;
@@ -62,6 +78,10 @@ const app = new Vue({
       this.expanded = true;
 
       electron.remote.getCurrentWindow().setSize(450, 450);
+    },
+
+    contractWindow() {
+      electron.remote.getCurrentWindow().setSize(450, 150);
     },
 
     /**
@@ -96,6 +116,15 @@ const app = new Vue({
 
       this.propNum = newProp[0];
       this.propDen = newProp[1];
+    },
+
+    handlePropNumInput() {
+      const crossDivide = this.propNum * this.denominator;
+      this.propDen = crossDivide / this.numerator;
+    },
+    handlePropDenInput() {
+      const crossDivide = this.propDen * this.numerator;
+      this.propNum = crossDivide / this.denominator;
     }
   }
 });

@@ -17,13 +17,16 @@
           <input v-bind:readonly="expanded" v-bind:class="{ readonly: expanded }" @click="handleInputClick" @change="handleChangeDen" @keypress="catchEnterKey" v-model="denominator" type="number">
         </div>
         
-        <button v-bind:class="{ active: readyToSubmit }" v-on:click="submitRatio()" class="submit">submit</button>
+        <div class="flex-row">
+          <button v-if="!expanded" v-bind:class="{ active: readyToSubmit }" v-on:click="submitRatio()" class="submit">submit</button>
+          <button v-else v-on:click="reset()" class="submit active">reset</button>
+        </div>
       </div>
       <div v-if="expanded" class="proportion">
         <div class="top">
-          <input @click="handleInputClick" v-model="propNum" type="number">
+          <input @click="handleInputClick" v-model="propNum" @input="handlePropNumInput" type="number">
           <img src="../shared/images/ratiomatic-Template@2x.png">
-          <input @click="handleInputClick" v-model="propDen" type="number">
+          <input @click="handleInputClick" v-model="propDen" @input="handlePropDenInput" type="number">
         </div>
       </div>
       <div v-if="expanded" class="results">
