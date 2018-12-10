@@ -1,15 +1,22 @@
 {
   "name": "ratiomatic",
   "version": "1.0.0",
-  "description": "",
+  "description": "A handy tray tool for working with ratios, for Mac",
   "scripts": {
     "start": "NODE_ENV=development electron .",
     "prod": "NODE_ENV=production electron .",
     "build": "electron-packager . --platform='darwin' --out='./dist' --asar --icon='./app/shared/images/icon.icns' --darwinDarkModeSupport=false --overwrite"
   },
   "main": "app/main/electron.js",
-  "keywords": [],
+  "keywords": [
+    "electron",
+    "ratio",
+    "proportion",
+    "tray",
+    "tool"
+  ],
   "author": "Chris Anselmo <christopherwk210@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "electron-positioner": "^4.1.0",
     "vue": "^2.5.18"
