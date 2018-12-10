@@ -4,11 +4,17 @@ const electron = require('electron');
 const app = new Vue({
   el: '#app',
   data: {
+    // Current ratio values
     numerator: null,
     denominator: null,
+
+    // State params
     loading: false,
+    expanded: false,
+
+    // Worker results
     subRatios: [],
-    expanded: false
+    superRatios: []
   },
   computed: {
     readyToSubmit() {
@@ -17,12 +23,16 @@ const app = new Vue({
   },
   methods: {
     handleInputClick: event => event.target.select(),
+
+    // Ensure that only positive whole numbers can be used
     handleChangeNum() {
       this.numerator = this.numerator.replace(/-/g, '').split('.')[0]
     },
     handleChangeDen() {
       this.denominator = this.denominator.replace(/-/g, '').split('.')[0]
     },
+
+    // Submit the current ratio data to the web worker and save the results
     submitRatio: async function() {
       if (!this.readyToSubmit || this.loading) return;
       this.loading = true;
@@ -39,12 +49,19 @@ const app = new Vue({
       this.expandWindow();
       console.log(this.subRatios);
     },
+
     expandWindow() {
       if (this.expanded) return;
       this.expanded = true;
 
       electron.remote.getCurrentWindow().setSize(450, 450);
     },
+
+    /**
+     * Sends a given ratio to the web worker to determine its sub ratios
+     * @param {number} num 
+     * @param {number} den 
+     */
     calculateRatios(num, den) {
       return new Promise((resolve, reject) => {
         const myWorker = new Worker('./assets/scripts/worker.js');
@@ -56,6 +73,7 @@ const app = new Vue({
           resolve(e.data);
         };
 
+        // Add a 5 second timeout to prevent hangs
         setTimeout(() => {
           terminated = true;
           myWorker.terminate();
