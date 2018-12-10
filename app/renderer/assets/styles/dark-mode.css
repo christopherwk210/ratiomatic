@@ -1,0 +1,61 @@
+body {
+  background: #383432;
+}
+
+.top input {
+  background: #716D6A;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: #E0E0D9;
+}
+
+.top input:hover {
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.top input:focus {
+  border: 2px solid rgba(255,255,255,0.5);
+}
+
+.top img {
+  opacity: 0.2;
+}
+
+.submit {
+  border: 2px solid rgba(255,255,255,0.4);
+  color: #E0E0D9;
+  background: #6A6765;
+}
+
+.submit.active:hover {
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.results select {
+  background: #716D6A;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.results select:focus {
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.results select option {
+  color: #E0E0D9;
+}
+
+.results select option:checked {
+  background: linear-gradient(#999999, #999999);
+  color: white;
+}
+
+.x {
+  color: #E0E0D9;
+}
+
+.options {
+  background: linear-gradient( to bottom, #E0E0D9, #E0E0D9 20%, transparent 20%, transparent 40%, #E0E0D9 40%, #E0E0D9 60%, transparent 60%, transparent 80%, #E0E0D9 80%, #E0E0D9 100% );
+  background-size: 17px 12px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  opacity: 0.2;
+}

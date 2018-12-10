@@ -1,6 +1,7 @@
 const Vue = require('vue/dist/vue');
 const electron = require('electron');
 
+// Handle keyboard shortcuts
 window.onkeydown = e => {
   if (!e.metaKey) return;
 
@@ -14,6 +15,7 @@ window.onkeydown = e => {
   }
 };
 
+// Vue setup
 const app = new Vue({
   el: '#app',
   data: {
@@ -32,6 +34,9 @@ const app = new Vue({
     // Proportional values
     propNum: null,
     propDen: null,
+
+    // OS theme
+    theme: 'light',
 
     // Options context menu
     menu: electron.remote.Menu.buildFromTemplate([
@@ -153,3 +158,29 @@ const app = new Vue({
     }
   }
 });
+
+// Initial theme handling
+handleDarkTheme();
+
+function handleDarkTheme() {
+  electron.remote.systemPreferences.subscribeNotification('AppleInterfaceThemeChangedNotification', setOSTheme);
+
+  function setOSTheme() {
+    const theme = electron.remote.systemPreferences.isDarkMode() ? 'dark' : 'light';
+    app.theme = theme;
+
+    const darkModeCSS = document.getElementById('dark-mode');
+    if (darkModeCSS) darkModeCSS.remove();
+
+    if (theme === 'dark') {
+      const link = document.createElement('link');
+      link.setAttribute('id', 'dark-mode');
+      link.setAttribute('rel', 'stylesheet');
+      link.setAttribute('href', 'assets/styles/dark-mode.css');
+  
+      document.head.appendChild(link);
+    }
+  }
+
+  setOSTheme();
+}

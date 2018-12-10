@@ -14,7 +14,7 @@
       <div v-bind:class="{ loading: loading }" class="top-content">
         <div class="top">
           <input v-bind:readonly="expanded" v-bind:class="{ readonly: expanded }" @click="handleInputClick" @change="handleChangeNum" @keypress="catchEnterKey" v-model="numerator" type="number">
-            <img v-if="!expanded" src="../shared/images/ratiomatic-Template@2x.png">
+            <img v-if="!expanded" v-bind:src="theme === 'light' ? '../shared/images/ratiomatic-Template@2x.png' : '../shared/images/ratiomatic-white.png'">
             <span class="x" v-else>/</span>
           <input v-bind:readonly="expanded" v-bind:class="{ readonly: expanded }" @click="handleInputClick" @change="handleChangeDen" @keypress="catchEnterKey" v-model="denominator" type="number">
         </div>
@@ -28,7 +28,7 @@
       <div v-if="expanded" class="proportion">
         <div class="top">
           <input @click="handleInputClick" v-model="propNum" @input="handlePropNumInput" type="number">
-          <img src="../shared/images/ratiomatic-Template@2x.png">
+          <img v-bind:src="theme === 'light' ? '../shared/images/ratiomatic-Template@2x.png' : '../shared/images/ratiomatic-white.png'">
           <input @click="handleInputClick" v-model="propDen" @input="handlePropDenInput" type="number">
         </div>
       </div>
