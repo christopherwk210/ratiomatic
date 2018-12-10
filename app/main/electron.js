@@ -48,7 +48,15 @@ function createBrowserWindow() {
     height: 150,
     frame: false,
     show: false,
-    skipTaskbar: true
+    skipTaskbar: true,
+    resizable: false,
+    minimizable: false,
+    maximizable: false,
+    fullscreenable: false,
+    acceptFirstMouse: true,
+    alwaysOnTop: true,
+    fullscreen: false,
+    movable: false
   });
 
   browserWindow.setMenu(null);

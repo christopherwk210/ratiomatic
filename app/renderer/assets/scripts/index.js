@@ -1,6 +1,19 @@
 const Vue = require('vue/dist/vue');
 const electron = require('electron');
 
+window.onkeydown = e => {
+  if (!e.metaKey) return;
+
+  switch (e.key.toLowerCase()) {
+    case 'q':
+      electron.remote.app.quit();
+      break;
+    case 'w':
+      electron.remote.getCurrentWindow().hide();
+      break;
+  }
+};
+
 const app = new Vue({
   el: '#app',
   data: {
