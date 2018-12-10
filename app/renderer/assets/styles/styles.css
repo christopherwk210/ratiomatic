@@ -68,6 +68,12 @@ html, body {
   opacity: 0.1;
 }
 
+.x {
+  opacity: 0.3;
+  margin: 0 1em;
+  font-size: 1.25em;
+}
+
 .submit {
   display: block;
   margin: 0 auto;
@@ -124,4 +130,10 @@ html, body {
 .results select option:checked {
   background: linear-gradient(#999999, #999999);
   color: white;
+}
+
+.readonly {
+  border: none !important;
+  user-select: none;
+  cursor: default;
 }

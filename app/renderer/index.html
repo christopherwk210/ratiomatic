@@ -11,16 +11,24 @@
     <div id="app">
       <div v-bind:class="{ loading: loading }" class="top-content">
         <div class="top">
-          <input @click="handleInputClick" @change="handleChangeNum" @keypress="catchEnterKey" v-model="numerator" type="number">
-          <img src="../shared/images/ratiomatic-Template@2x.png">
-          <input @click="handleInputClick" @change="handleChangeDen" @keypress="catchEnterKey" v-model="denominator" type="number">
+          <input v-bind:readonly="expanded" v-bind:class="{ readonly: expanded }" @click="handleInputClick" @change="handleChangeNum" @keypress="catchEnterKey" v-model="numerator" type="number">
+            <img v-if="!expanded" src="../shared/images/ratiomatic-Template@2x.png">
+            <span class="x" v-else>/</span>
+          <input v-bind:readonly="expanded" v-bind:class="{ readonly: expanded }" @click="handleInputClick" @change="handleChangeDen" @keypress="catchEnterKey" v-model="denominator" type="number">
         </div>
         
         <button v-bind:class="{ active: readyToSubmit }" v-on:click="submitRatio()" class="submit">submit</button>
       </div>
+      <div v-if="expanded" class="proportion">
+        <div class="top">
+          <input @click="handleInputClick" v-model="propNum" type="number">
+          <img src="../shared/images/ratiomatic-Template@2x.png">
+          <input @click="handleInputClick" v-model="propDen" type="number">
+        </div>
+      </div>
       <div v-if="expanded" class="results">
-        <select multiple size="2">
-          <option v-for="sub of subRatios" value="">{{sub[0]}} <img src="../shared/images/ratiomatic-Template@2x.png"> {{sub[1]}}</option>
+        <select @input="handleRatioSelect" multiple size="2">
+          <option v-for="sub of subRatios" v-bind:value="sub.join(':')">{{sub[0]}} <img src="../shared/images/ratiomatic-Template@2x.png"> {{sub[1]}}</option>
         </select>
       </div>
     </div>

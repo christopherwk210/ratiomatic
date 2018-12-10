@@ -14,7 +14,11 @@ const app = new Vue({
 
     // Worker results
     subRatios: [],
-    superRatios: []
+    superRatios: [],
+
+    // Proportional values
+    propNum: null,
+    propDen: null
   },
   computed: {
     readyToSubmit() {
@@ -51,7 +55,6 @@ const app = new Vue({
       }
 
       this.expandWindow();
-      console.log(this.subRatios);
     },
 
     expandWindow() {
@@ -86,6 +89,13 @@ const app = new Vue({
     
         myWorker.postMessage([num, den]);
       });
+    },
+
+    handleRatioSelect(event) {
+      const newProp = event.target.value.split(':');
+
+      this.propNum = newProp[0];
+      this.propDen = newProp[1];
     }
   }
 });
