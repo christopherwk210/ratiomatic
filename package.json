@@ -22,7 +22,7 @@
     "vue": "^2.5.18"
   },
   "devDependencies": {
-    "electron": "^3.0.10",
+    "electron": "^7.2.4",
     "electron-packager": "^13.0.0"
   }
 }
