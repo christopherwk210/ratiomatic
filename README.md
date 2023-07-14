@@ -1,4 +1,4 @@
-⚠️ [This project now has an online version!](https://github.com/christopherwk210/tophers-tools/tree/master/src/app/components/tools/math/ratios)
+⚠️ [This project now has an online version!](https://topheranselmo.com/tools/ratiomatic)
 
 <h1 align="center">ratiomatic</h1>
 <p align="center">A handy tray tool for working with ratios, for Mac</p>
